@@ -8,8 +8,8 @@ const Stack = createNativeStackNavigator();
 
 function NativeStackNavigation(): JSX.Element {
     return (
-        <Stack.Navigator initialRouteName='Home'>
-            <Stack.Screen name="Home" component={HomeScreenTab} />
+        <Stack.Navigator initialRouteName='Home' screenOptions={{animation: "slide_from_right"}}>
+            <Stack.Screen name="Home" component={Home} />
             <Stack.Screen name="Notifications" component={Home} />
             <Stack.Screen name="Profile" component={Home} />
             <Stack.Screen name="Settings" component={Home} />

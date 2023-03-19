@@ -2,6 +2,8 @@ import { View, Text } from 'react-native'
 import React from 'react'
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import TopTabsNavigation from './TopTabsNavigation';
+import BottomTabNavigation from './BottomTabNavigation';
+import NativeStackNavigation from './NativeStackNavigation';
 
 function Feed() {
     return (
@@ -21,8 +23,9 @@ const DrawerNavigation = () => {
     return (
         <Drawer.Navigator
             screenOptions={{ drawerActiveBackgroundColor: "gold", headerTitle: "Hello Crack!", headerShadowVisible: true }}>
-            <Drawer.Screen name="Feed" component={TopTabsNavigation} />
-            <Drawer.Screen name="Article" component={Article} />
+            <Drawer.Screen name="Top Navigation" component={TopTabsNavigation} />
+            <Drawer.Screen name="Bottom Navigation" component={BottomTabNavigation} />
+            <Drawer.Screen name="Stack Navigation" component={NativeStackNavigation} />
         </Drawer.Navigator>
     )
 }
