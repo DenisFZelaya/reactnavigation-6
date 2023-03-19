@@ -1,13 +1,15 @@
 import { View, Text, ScrollView, Button } from 'react-native'
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import HomeScreen from '../screens/HomeScreen';
+import HomeScreenTab from '../screens/HomeScreenTab';
 
 const Stack = createNativeStackNavigator();
 
 function NativeStackNavigation(): JSX.Element {
     return (
         <Stack.Navigator initialRouteName='Home'>
-            <Stack.Screen name="Home" component={Home} />
+            <Stack.Screen name="Home" component={HomeScreenTab} />
             <Stack.Screen name="Notifications" component={Home} />
             <Stack.Screen name="Profile" component={Home} />
             <Stack.Screen name="Settings" component={Home} />
