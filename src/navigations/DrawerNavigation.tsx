@@ -22,7 +22,7 @@ const Drawer = createDrawerNavigator();
 const DrawerNavigation = () => {
     return (
         <Drawer.Navigator
-            screenOptions={{ drawerActiveBackgroundColor: "gold", headerTitle: "Hello Crack!", headerShadowVisible: true }}>
+            screenOptions={{ drawerActiveBackgroundColor: "gold", headerTitle: "Hello dfz!", headerShadowVisible: true }}>
             <Drawer.Screen name="Top Navigation" component={TopTabsNavigation} />
             <Drawer.Screen name="Bottom Navigation" component={BottomTabNavigation} />
             <Drawer.Screen name="Stack Navigation" component={NativeStackNavigation} />
