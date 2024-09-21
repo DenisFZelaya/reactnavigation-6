@@ -6,7 +6,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 function HomeScreen() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Home dfz!</Text>
+      <Text className="bg-slate-500">Home dfz!</Text>
     </View>
   );
 }

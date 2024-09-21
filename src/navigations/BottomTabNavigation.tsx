@@ -1,6 +1,6 @@
 import { View, Text } from 'react-native'
 import React from 'react'
-
+import tw from 'tailwind-react-native-classnames';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 const Tab = createBottomTabNavigator();
@@ -20,6 +20,6 @@ export default BottomTabNavigation
 
 function Test() {
     return (
-        <Text>Test</Text>
+        <Text style={tw`bg-gray-400 text-white text-xl`}>Hello, Tailwind CSS in React Native!</Text>
     );
 }
