@@ -25,7 +25,6 @@ function Home({ navigation }): JSX.Element {
             <Button title='Go to Profile' onPress={() => navigation.navigate('Profile')} />
             <Button title='Go to Settings' onPress={() => navigation.navigate('Settings')} />
         </ScrollView>
-
     )
 }
 
