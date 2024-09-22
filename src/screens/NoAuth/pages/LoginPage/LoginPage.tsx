@@ -17,18 +17,20 @@ export default function LoginPage({ navigation }) {
 
     return (
         <View
-            style={className("bg-white")}>
+            style={className("bg-white h-full flex flex-1 space-around")}
+        >
             <ScrollView
                 contentContainerStyle={className("w-full max-w-md p-6 rounded-2xl")}>
                 <View style={className("text-center")}>
-                    <Text style={className("mt-6 text-3xl font-bold text-gray-900")}>Bienvenido de nuevo</Text>
+                    <Text style={className("text-2xl text-black")}>Bienvenido de nuevo</Text>
                     <Text style={className("mt-2 text-sm text-gray-600")}>Inicia sesión para continuar</Text>
                 </View>
                 <View style={className("mt-8")}>
                     <View style={className("rounded-md")}>
                         <TextInput
-                            style={className("rounded-t-md border border-gray-300 p-2")}
+                            style={className("rounded-t-md border bg-gray-100 border-gray-300 p-2")}
                             placeholder="Correo electrónico"
+
                             value={email}
                             onChangeText={setEmail}
                             // autoCompleteType="email"
@@ -37,7 +39,7 @@ export default function LoginPage({ navigation }) {
                         // required
                         />
                         <TextInput
-                            style={className("rounded-b-md border border-gray-300 p-2")}
+                            style={className("rounded-b-md border bg-gray-100 border-gray-300 p-2")}
                             placeholder="Contraseña"
                             value={password}
                             onChangeText={setPassword}
@@ -50,9 +52,9 @@ export default function LoginPage({ navigation }) {
 
                     <TouchableOpacity
                         onPress={handleLogin}
-                        style={className(" relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white")}
+                        style={className("py-6 mt-2 relative w-full flex justify-center text-center bg-indigo-600 px-4 border border-transparent rounded-md")}
                     >
-                        <Text style={className("absolute left-0 inset-y-0 flex items-center pl-3")}>
+                        <Text style={className("w-full text-center text-lg text-white font-medium absolute flex items-center pl-3")}>
                             Iniciar sesión
                         </Text>
 
@@ -71,13 +73,13 @@ export default function LoginPage({ navigation }) {
 
                     <View style={className("mt-6 flex flex-row justify-between")}>
                         <TouchableOpacity
-                            style={className("w-full flex flex-row items-center justify-center border border-gray-300 rounded-md p-2")}>
-                            <Text style={className("ml-2")}>Facebook</Text>
+                            style={className("w-1/3 flex flex-row items-center justify-center border border-gray-300 rounded-md p-2")}>
+                            <Text style={className("ml-2 text-red-600")}>Facebook</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={className("w-full flex flex-row items-center justify-center border border-gray-300 rounded-md p-2")}>
+                        <TouchableOpacity style={className("w-1/3 flex flex-row items-center justify-center border border-gray-300 rounded-md p-2")}>
                             <Text style={className("text-red-600")}>Google</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={className("w-full flex flex-row items-center justify-center border border-gray-300 rounded-md p-2")}>
+                        <TouchableOpacity style={className("w-1/3 flex flex-row items-center justify-center border border-gray-300 rounded-md p-2")}>
                             <Text style={className("text-blue-500")}>Microsoft</Text>
                         </TouchableOpacity>
                     </View>

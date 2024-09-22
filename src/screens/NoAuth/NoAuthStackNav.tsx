@@ -9,7 +9,10 @@ const Stack = createNativeStackNavigator();
 
 function NoAuthStackNav(): JSX.Element {
     return (
-        <Stack.Navigator initialRouteName='Login' screenOptions={{animation: "slide_from_right"}}>
+        <Stack.Navigator
+            initialRouteName='Login'
+            
+            screenOptions={{ animation: "slide_from_right", headerShown: false }}>
             <Stack.Screen name="Login" component={LoginPage} />
             <Stack.Screen name="Register" component={RegisterPage} />
             <Stack.Screen name="UpdatePassword" component={Home} />
