@@ -1,4 +1,4 @@
-import { View, Text, ScrollView, Button, TextInput, TouchableOpacity } from 'react-native'
+import { View, Text, ScrollView, Button, TextInput, TouchableOpacity, Switch } from 'react-native'
 import React, { useState } from 'react'
 import { className } from '../../../../utils/className'
 import { Formik } from 'formik';
@@ -20,27 +20,19 @@ export default function LoginPage({ navigation }) {
         { name: 'Option 2', value: 'option2' },
         { name: 'Option 3', value: 'option3' },
         { name: 'Another Option', value: 'anotherOption' },
-      ];
+    ];
 
     return (
         <View
             style={className("bg-white h-full flex flex-1")}
         >
-
+            <Switch value={true} />
             <CustomDropdownSearch
                 options={options}
                 selectedValue={selectedValue}
                 onValueChange={setSelectedValue}
             />
 
-            <View>
-                <Text>Selected: {selectedValue}</Text>
-                <CustomDropdown
-                    options={options}
-                    selectedValue={selectedValue}
-                    onValueChange={setSelectedValue}
-                />
-            </View>
             <Formik
                 initialValues={{ email: '' }}
                 onSubmit={values => console.log(values)}
@@ -71,6 +63,14 @@ export default function LoginPage({ navigation }) {
                         <Text>Values: {JSON.stringify(values)}</Text>
                         <Text>Erros: {JSON.stringify(errors)}</Text>
                         <View style={className("mt-8")}>
+                            <View>
+                                <Text>Selected: {selectedValue}</Text>
+                                <CustomDropdown
+                                    options={options}
+                                    selectedValue={selectedValue}
+                                    onValueChange={handleChange('country')}
+                                />
+                            </View>
                             <View style={className("rounded-md")}>
                                 <TextInput
                                     style={className("rounded-t-md border bg-gray-100 border-gray-300 p-2")}

@@ -52,7 +52,7 @@ const CustomDropdown = ({ options, selectedValue, onValueChange }) => {
 
 const styles = StyleSheet.create({
   container: {
-    margin: 20,
+    margin: 0,
   },
   dropdown: {
     borderWidth: 1,
