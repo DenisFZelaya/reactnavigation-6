@@ -2,20 +2,45 @@ import { View, Text, ScrollView, Button, TextInput, TouchableOpacity } from 'rea
 import React, { useState } from 'react'
 import { className } from '../../../../utils/className'
 import { Formik } from 'formik';
+import CustomDropdown from '../../../../components/CustomDropdown';
+import CustomDropdownSearch from '../../../../components/CustomDropdownSearch';
 
 export default function LoginPage({ navigation }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [selectedValue, setSelectedValue] = useState('');
 
     const handleLogin = () => {
         // Aquí iría la lógica de inicio de sesión
         console.log('Login with:', email, password);
     };
 
+    const options = [
+        { name: 'Honduras', value: '95' },
+        { name: 'Option 2', value: 'option2' },
+        { name: 'Option 3', value: 'option3' },
+        { name: 'Another Option', value: 'anotherOption' },
+      ];
+
     return (
         <View
             style={className("bg-white h-full flex flex-1")}
         >
+
+            <CustomDropdownSearch
+                options={options}
+                selectedValue={selectedValue}
+                onValueChange={setSelectedValue}
+            />
+
+            <View>
+                <Text>Selected: {selectedValue}</Text>
+                <CustomDropdown
+                    options={options}
+                    selectedValue={selectedValue}
+                    onValueChange={setSelectedValue}
+                />
+            </View>
             <Formik
                 initialValues={{ email: '' }}
                 onSubmit={values => console.log(values)}
