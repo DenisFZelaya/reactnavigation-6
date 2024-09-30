@@ -5,6 +5,7 @@ import TopTabsNavigation from './TopTabsNavigation';
 import BottomTabNavigation from './BottomTabNavigation';
 import NativeStackNavigation from './NativeStackNavigation';
 import tw from 'tailwind-react-native-classnames';
+import StackNavCreditManagement from '../modules/credits/StackNavCreditManagement';
 
 function Feed() {
     return (
@@ -58,7 +59,8 @@ const CustomDrawerContent = (props) => {
                 headerTintColor: "#ffffff",
                 headerTitleStyle: tw`font-bold`,
             
-            }}>            
+            }}>   
+            <Drawer.Screen name="Solicitudes" component={StackNavCreditManagement} />
             <Drawer.Screen name="Top Navigation"
                 component={TopTabsNavigation}
                 options={{
@@ -69,6 +71,7 @@ const CustomDrawerContent = (props) => {
             />
             <Drawer.Screen name="Bottom Navigation" component={BottomTabNavigation} />
             <Drawer.Screen name="Stack Navigation" component={NativeStackNavigation} />
+            
         </Drawer.Navigator>
     )
 }

@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, Modal, FlatList, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, Modal, FlatList, StyleSheet, Button } from 'react-native';
+import { className } from '../utils/className';
 
 const CustomDropdown = ({ options, selectedValue, onValueChange }) => {
   const [modalVisible, setModalVisible] = useState(false);
+
+  const handleClose = () => {
+    setModalVisible(false);
+  };
 
   const handleSelect = (value) => {
     onValueChange(value);
@@ -15,12 +20,12 @@ const CustomDropdown = ({ options, selectedValue, onValueChange }) => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={className('m-0')}>
       <TouchableOpacity
-        style={styles.dropdown}
+        style={className('border border-gray-300 p-3 rounded')}
         onPress={() => setModalVisible(true)}
       >
-        <Text style={styles.selectedText}>{getSelectedName()}</Text>
+        <Text style={className('text-lg')}>{getSelectedName()}</Text>
       </TouchableOpacity>
 
       <Modal
@@ -29,20 +34,21 @@ const CustomDropdown = ({ options, selectedValue, onValueChange }) => {
         animationType="slide"
         onRequestClose={() => setModalVisible(false)}
       >
-        <View style={styles.modalContainer}>
-          <View style={styles.modalContent}>
+        <View style={className('flex-1 justify-center bg-black bg-opacity-50')}>
+          <View style={className('bg-white m-5 rounded p-5')}>
             <FlatList
               data={options}
               keyExtractor={(item) => item.value}
               renderItem={({ item }) => (
                 <TouchableOpacity
-                  style={styles.option}
+                  style={className('p-3 bg-gray-100 rounded-lg mb-2')}
                   onPress={() => handleSelect(item.value)}
                 >
-                  <Text style={styles.optionText}>{item.name}</Text>
+                  <Text style={className('text-lg')}>{item.name}</Text>
                 </TouchableOpacity>
               )}
             />
+            <Button title='Cerrar' onPress={handleClose} />
           </View>
         </View>
       </Modal>
@@ -50,36 +56,5 @@ const CustomDropdown = ({ options, selectedValue, onValueChange }) => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    margin: 0,
-  },
-  dropdown: {
-    borderWidth: 1,
-    borderColor: '#ccc',
-    padding: 10,
-    borderRadius: 5,
-  },
-  selectedText: {
-    fontSize: 16,
-  },
-  modalContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-  },
-  modalContent: {
-    backgroundColor: 'white',
-    margin: 20,
-    borderRadius: 5,
-    padding: 20,
-  },
-  option: {
-    padding: 10,
-  },
-  optionText: {
-    fontSize: 16,
-  },
-});
 
 export default CustomDropdown;

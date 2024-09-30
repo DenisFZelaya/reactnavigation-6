@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, Modal, FlatList, TextInput } from 'react-native';
+import { View, Text, TouchableOpacity, Modal, FlatList, TextInput, Button } from 'react-native';
 import { className } from '../utils/className';
 
 const CustomDropdownSearch = ({ options, selectedValue, onValueChange }) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredOptions, setFilteredOptions] = useState(options);
+
+  const handleClose = () => {
+    setModalVisible(false);
+    setSearchQuery('');
+  };
 
   const handleSelect = (value) => {
     onValueChange(value);
@@ -28,7 +33,7 @@ const CustomDropdownSearch = ({ options, selectedValue, onValueChange }) => {
   };
 
   return (
-    <View style={className('m-5')}>
+    <View style={className('m-0')}>
       <TouchableOpacity
         style={className('border border-gray-300 p-3 rounded')}
         onPress={() => setModalVisible(true)}
@@ -55,13 +60,14 @@ const CustomDropdownSearch = ({ options, selectedValue, onValueChange }) => {
               keyExtractor={(item) => item.value}
               renderItem={({ item }) => (
                 <TouchableOpacity
-                  style={className('p-3')}
+                  style={className('p-3 bg-gray-100 rounded-lg mb-2')}
                   onPress={() => handleSelect(item.value)}
                 >
                   <Text style={className('text-lg')}>{item.name}</Text>
                 </TouchableOpacity>
               )}
             />
+            <Button title='Cerrar' onPress={handleClose} />
           </View>
         </View>
       </Modal>
