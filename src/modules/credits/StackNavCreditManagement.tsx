@@ -18,7 +18,7 @@ function StackNavCreditManagement(): JSX.Element {
     return (
         <Stack.Navigator
             initialRouteName='Home'
-            screenOptions={{ animation: "slide_from_right", headerShown: false }}>
+            screenOptions={{ animation: "slide_from_right" }}>
             <Stack.Screen name="Home" component={CreditListPage} />
             <Stack.Screen name="RiskCenterDetails" component={RiskCenterDetailsPage} />
             <Stack.Screen name="GeneralData" component={GeneralDataPage} />

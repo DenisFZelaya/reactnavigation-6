@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, Modal, FlatList, StyleSheet, Button } from 'react-native';
 import { className } from '../utils/className';
 
-const CustomDropdown = ({ options, selectedValue, onValueChange }) => {
+const CustomDropdown = ({ options, selectedValue, onValueChange, title = "" }) => {
   const [modalVisible, setModalVisible] = useState(false);
 
   const handleClose = () => {
@@ -22,10 +22,10 @@ const CustomDropdown = ({ options, selectedValue, onValueChange }) => {
   return (
     <View style={className('m-0')}>
       <TouchableOpacity
-        style={className('border border-gray-300 p-3 rounded')}
+        style={className('bg-purple-50 p-3 rounded')}
         onPress={() => setModalVisible(true)}
       >
-        <Text style={className('text-lg')}>{getSelectedName()}</Text>
+        <Text style={className('')}>{getSelectedName()}</Text>
       </TouchableOpacity>
 
       <Modal
@@ -36,6 +36,7 @@ const CustomDropdown = ({ options, selectedValue, onValueChange }) => {
       >
         <View style={className('flex-1 justify-center bg-black bg-opacity-50')}>
           <View style={className('bg-white m-5 rounded p-5')}>
+            <Text style={className('text-lg font-semibold mb-2')}>{title}</Text>
             <FlatList
               data={options}
               keyExtractor={(item) => item.value}
