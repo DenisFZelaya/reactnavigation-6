@@ -1,4 +1,4 @@
-#Sun Sep 15 12:26:58 CST 2024
+#Tue Sep 24 21:21:11 CST 2024
 base.0=/Users/davidcanaca/Documents/Proyectos/MobileApp/reactnavigation-6/android/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
 base.1=/Users/davidcanaca/Documents/Proyectos/MobileApp/reactnavigation-6/android/app/build/intermediates/dex/debug/mergeLibDexDebug/0/classes.dex
 base.2=/Users/davidcanaca/Documents/Proyectos/MobileApp/reactnavigation-6/android/app/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
