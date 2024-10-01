@@ -1,10 +1,10 @@
 import React from 'react';
 import {View, Text, ScrollView, Button, TextInput} from 'react-native';
 import {Formik} from 'formik';
-import {className} from '../../../../../utils/className';
-import CustomDropdown from '../../../../../components/CustomDropdown';
-import CustomDropdownSearch from '../../../../../components/CustomDropdownSearch';
-import CustomField from '../../../../../components/CustomField';
+import {className} from '../../../../../../../utils/className';
+import CustomDropdown from '../../../../../../../components/CustomDropdown';
+import CustomDropdownSearch from '../../../../../../../components/CustomDropdownSearch';
+import CustomField from '../../../../../../../components/CustomField';
 
 // Arreglo de configuración para los campos de datos básicos
 const basicClientDataFields = [

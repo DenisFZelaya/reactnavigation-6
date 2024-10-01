@@ -5,7 +5,8 @@ import TopTabsNavigation from './TopTabsNavigation';
 import BottomTabNavigation from './BottomTabNavigation';
 import NativeStackNavigation from './NativeStackNavigation';
 import tw from 'tailwind-react-native-classnames';
-import StackNavCreditManagement from '../modules/credits/StackNavCreditManagement';
+import StackNavCreditManagement from '../modules/credits/CreditRequestManager/Router/StackNavCreditManagement';
+import CreditListStackNav from '../modules/credits/CreditListPage/Router/CreditListStackNav';
 
 function Feed() {
     return (
@@ -60,7 +61,7 @@ const CustomDrawerContent = (props) => {
                 headerTitleStyle: tw`font-bold`,
             
             }}>   
-            <Drawer.Screen name="Solicitudes" component={StackNavCreditManagement} />
+            <Drawer.Screen name="Solicitudes" component={CreditListStackNav} />
             <Drawer.Screen name="Top Navigation"
                 component={TopTabsNavigation}
                 options={{

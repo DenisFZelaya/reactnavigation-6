@@ -1,16 +1,15 @@
 import { View, Text, ScrollView, Button } from 'react-native'
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import HomeScreen from '../screens/HomeScreen';
-import HomeScreenTab from '../../screens/HomeScreenTab';
-import CreditListPage from './CreditListPage/CreditListPage';
-import RiskCenterDetailsPage from './RiskCenterDetailsPage/RiskCenterDetailsPage';
-import GeneralDataPage from './GeneralDataPage/GeneralDataPageNav';
-import RequestDetailsPage from './RequestDetailsPage/RequestDetailsPage';
-import GuaranteesPage from './GuaranteesPage/GuaranteesPage';
-import FinancialEvaluationPage from './FinancialEvaluationPage/FinancialEvaluationPage';
-import PersonalReferencesPage from './PersonalReferencesPage/PersonalReferencesPage';
-import BusinessPhotosPage from './BusinessPhotosPage/BusinessPhotosPage';
+import CreditListPage from '../../CreditListPage/Pages/CreditListPage';
+import RiskCenterDetailsPage from '../Pages/RiskCenterDetailsPage/RiskCenterDetailsPage';
+import GeneralDataPage from '../Pages/GeneralDataPage/GeneralDataPageNav';
+import RequestDetailsPage from '../Pages/RequestDetailsPage/RequestDetailsPage';
+import GuaranteesPage from '../Pages/GuaranteesPage/GuaranteesPage';
+import FinancialEvaluationPage from '../Pages/FinancialEvaluationPage/FinancialEvaluationPage';
+import PersonalReferencesPage from '../Pages/PersonalReferencesPage/PersonalReferencesPage';
+import BusinessPhotosPage from '../Pages/BusinessPhotosPage/BusinessPhotosPage';
+import CreditManagement from '../Pages/CreditManagement/CreditManagement';
 
 const Stack = createNativeStackNavigator();
 
@@ -19,7 +18,7 @@ function StackNavCreditManagement(): JSX.Element {
         <Stack.Navigator
             initialRouteName='Home'
             screenOptions={{ animation: "slide_from_right" }}>
-            <Stack.Screen name="Home" component={CreditListPage} />
+            <Stack.Screen name="Home" component={CreditManagement} />
             <Stack.Screen name="RiskCenterDetails" component={RiskCenterDetailsPage} />
             <Stack.Screen name="GeneralData" component={GeneralDataPage} />
             <Stack.Screen name="RequestDetails" component={RequestDetailsPage} />
