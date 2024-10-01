@@ -22,6 +22,8 @@ export default function CreditListPage({navigation}) {
     {name: 'Ireene Zeaya Zeaya'},
   ];
 
+  console.log('navigation: ', navigation);
+
   return (
     <ScrollView style={className('h-full bg-gray-100 p-4')}>
       <Text
@@ -29,19 +31,18 @@ export default function CreditListPage({navigation}) {
         Listado de Créditos
       </Text>
 
-      {Array.isArray(items) &&
-        items.length > 0 &&
-        items.map(item => 
-          <TouchableOpacity
-            onPress={() => navigation.navigate('CreditManagement')}>
-            <View style={className('bg-white mb-2 p-2 rounded-lg')} v>
-              <Text style={className('text-xl')}>{item?.name}</Text>
-              <Text style={className('text-gray-400')}>
-                Monto: L 200,000.00
-              </Text>
-            </View>
-          </TouchableOpacity>
-        )}
+      <TouchableOpacity onPress={() => navigation.navigate('CreditManagement')}>
+        <View style={className('bg-white mb-2 p-2 rounded-lg')} v>
+          <Text style={className('text-xl')}>Denis Zelaya</Text>
+          <Text style={className('text-gray-400')}>Monto: L 200,000.00</Text>
+        </View>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('CreditManagement')}>
+        <View style={className('bg-white mb-2 p-2 rounded-lg')} v>
+          <Text style={className('text-xl')}>Denis Zelaya Zeaya</Text>
+          <Text style={className('text-gray-400')}>Monto: L 200,000.00</Text>
+        </View>
+      </TouchableOpacity>
     </ScrollView>
   );
 }
