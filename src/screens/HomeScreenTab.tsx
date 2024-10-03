@@ -25,7 +25,7 @@ function MapsScreen() {
       <Text>MapsScreen!</Text>
     </View>
   );
-}
+} 
 
 const Tab = createBottomTabNavigator();
 

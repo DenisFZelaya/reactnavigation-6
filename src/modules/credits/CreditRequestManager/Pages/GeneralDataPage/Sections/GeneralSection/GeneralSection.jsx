@@ -1,13 +1,18 @@
 import React from 'react';
-import {View, Text, ScrollView, Button, TextInput} from 'react-native';
-import {Formik} from 'formik';
-import {className} from '../../../../../../../utils/className';
+import { View, Text, ScrollView, Button, TextInput } from 'react-native';
+import { Formik } from 'formik';
+import { className } from '../../../../../../../utils/className';
 import CustomDropdown from '../../../../../../../components/CustomDropdown';
 import CustomDropdownSearch from '../../../../../../../components/CustomDropdownSearch';
 import CustomField from '../../../../../../../components/CustomField';
 
 // Arreglo de configuración para los campos de datos básicos
 const basicClientDataFields = [
+  {
+    label: 'Información Personal',
+    subLabel: 'Información personal del solicitante',
+    component: 'Title',
+  },
   {
     label: 'First Name',
     name: 'firstName',
@@ -31,8 +36,8 @@ const basicClientDataFields = [
     name: 'identificationType',
     component: 'CustomDropdown',
     options: [
-      {name: 'DNI', value: 'dni'},
-      {name: 'Passport', value: 'passport'},
+      { name: 'DNI', value: 'dni' },
+      { name: 'Passport', value: 'passport' },
     ],
   },
   {
@@ -42,32 +47,37 @@ const basicClientDataFields = [
     placeholder: 'Enter DNI Number',
   },
   {
+    label: 'Nacimiento',
+    subLabel: 'Fecha de nacimiento del solicitante',
+    component: 'Title',
+  },
+  {
     label: 'Nationality',
     name: 'country',
     component: 'CustomDropdownSearch',
     options: [
-      {name: 'Honduras', value: '95'},
-      {name: 'USA', value: 'usa'},
-      {name: 'GT', value: 'gt'},
-      {name: 'NIC', value: 'nic'},
-      {name: 'SV', value: 'sv'},
-      {name: 'USAS', value: 'usa2'},
-      {name: 'GTS', value: 'gt2'},
-      {name: 'NICS', value: 'nic2'},
-      {name: 'SVS', value: 'sv2'},
-      {name: 'USAEEEE', value: 'usa33'},
-      {name: 'GTEE', value: 'gt33'},
-      {name: 'NICEE', value: 'nic33'},
+      { name: 'Honduras', value: '95' },
+      { name: 'USA', value: 'usa' },
+      { name: 'GT', value: 'gt' },
+      { name: 'NIC', value: 'nic' },
+      { name: 'SV', value: 'sv' },
+      { name: 'USAS', value: 'usa2' },
+      { name: 'GTS', value: 'gt2' },
+      { name: 'NICS', value: 'nic2' },
+      { name: 'SVS', value: 'sv2' },
+      { name: 'USAEEEE', value: 'usa33' },
+      { name: 'GTEE', value: 'gt33' },
+      { name: 'NICEE', value: 'nic33' },
       { name: 'SVEE', value: 'sv33' },
-      {name: 'USAEEEE', value: 'usa33'},
-      {name: 'GTEE', value: 'gt33'},
-      {name: 'NICEE', value: 'nic33'},
+      { name: 'USAEEEE', value: 'usa33' },
+      { name: 'GTEE', value: 'gt33' },
+      { name: 'NICEE', value: 'nic33' },
       { name: 'SVEE', value: 'sv33' },
-      
-      {name: 'USAEEsEE', value: 'ussa33'},
-      {name: 'GTsEE', value: 'gts33'},
-      {name: 'NIsCEE', value: 'nisc33'},
-      {name: 'SVsEE', value: 'sv3s3'},
+
+      { name: 'USAEEsEE', value: 'ussa33' },
+      { name: 'GTsEE', value: 'gts33' },
+      { name: 'NIsCEE', value: 'nisc33' },
+      { name: 'SVsEE', value: 'sv3s3' },
     ],
   },
   {
@@ -83,21 +93,27 @@ const basicClientDataFields = [
     placeholder: 'Select Birth Date',
   },
   {
+    label: 'Test',
+    subLabel: 'Test detallado',
+    component: 'Title',
+  },
+  {
     label: 'Gender',
     name: 'gender',
     component: 'CustomDropdown',
     options: [
-      {name: 'Male', value: 'male'},
-      {name: 'Female', value: 'female'},
+      { name: 'Male', value: 'male' },
+      { name: 'Female', value: 'female' },
     ],
   },
+
   {
     label: 'Civil State',
     name: 'civilState',
     component: 'CustomDropdown',
     options: [
-      {name: 'Single', value: 'single'},
-      {name: 'Married', value: 'married'},
+      { name: 'Single', value: 'single' },
+      { name: 'Married', value: 'married' },
     ],
   },
   {
@@ -105,9 +121,14 @@ const basicClientDataFields = [
     name: 'educationLevel',
     component: 'CustomDropdown',
     options: [
-      {name: 'High School', value: 'highSchool'},
-      {name: 'Bachelor', value: 'bachelor'},
+      { name: 'High School', value: 'highSchool' },
+      { name: 'Bachelor', value: 'bachelor' },
     ],
+  },
+  {
+    label: 'Dependientes',
+    subLabel: 'Personas que dependen económicamente del solicitante',
+    component: 'Title',
   },
   {
     label: 'Number of Dependents',
@@ -120,6 +141,10 @@ const basicClientDataFields = [
     name: 'children',
     component: 'TextField',
     placeholder: 'Enter Number of Children',
+    customProps: {
+      inputMode: 'numeric'
+
+    }
   },
 ];
 
@@ -146,14 +171,8 @@ const GeneralSection = () => {
         console.log(values);
         // Aquí puedes manejar el envío de datos
       }}>
-      {({handleChange, handleSubmit, values}) => (
+      {({ handleChange, handleSubmit, values }) => (
         <ScrollView style={className('p-4 bg-white')}>
-          <Text
-            style={className(
-              'text-2xl font-bold text-center mb-6 text-blue-600',
-            )}>
-            Basic Client Data
-          </Text>
           {basicClientDataFields.map((field, index) => (
             <CustomField
               field={field}
@@ -163,6 +182,9 @@ const GeneralSection = () => {
             />
           ))}
           <Button title="Submit" onPress={handleSubmit} color="#1E90FF" />
+          <Text>
+            {JSON.stringify(values)}
+          </Text>
         </ScrollView>
       )}
     </Formik>

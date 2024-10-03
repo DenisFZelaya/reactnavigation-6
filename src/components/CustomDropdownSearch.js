@@ -29,11 +29,11 @@ const CustomDropdownSearch = ({ options, selectedValue, onValueChange, title = "
 
   const getSelectedName = () => {
     const selectedOption = options.find(option => option.value === selectedValue);
-    return selectedOption ? selectedOption.name : 'Select an option';
+    return selectedOption ? selectedOption.name : title;
   };
 
   return (
-    <View style={className('m-0')}>
+    <View style={className('m-0 mb-1')}>
       <TouchableOpacity
         style={className('bg-purple-50 p-3 rounded')}
         onPress={() => setModalVisible(true)}
