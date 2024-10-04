@@ -35,11 +35,17 @@ const CustomDropdownSearch = ({ options, selectedValue, onValueChange, title = "
   return (
     <View style={className('m-0 mb-1')}>
       <TouchableOpacity
-        style={className('bg-purple-50 p-3 rounded')}
+        style={className(' ')}
         onPress={() => setModalVisible(true)}
       >
-        <Text style={className('')}>{getSelectedName()}</Text>
+        <View style={className('bg-purple-50 p-3 rounded flex flex-row justify-between items-center w-full')}>
+
+          <Text style={className('')}>{getSelectedName()}</Text>
+
+          <Text>🔎</Text>
+        </View>
       </TouchableOpacity>
+
 
       <Modal
         transparent={true}
@@ -47,9 +53,19 @@ const CustomDropdownSearch = ({ options, selectedValue, onValueChange, title = "
         animationType="slide"
         onRequestClose={() => setModalVisible(false)}
       >
-        <View style={className('flex-1 justify-center bg-black bg-opacity-50')}>
-          <View style={className('bg-white m-5 rounded p-5')}>
-          <Text style={className('text-lg font-semibold mb-2')}>{title}</Text>
+        <View style={className('justify-center bg-black bg-opacity-50')}>
+          <View style={className('h-full bg-white m-5 rounded p-5')}>
+          <View style={className('flex flex-row justify-between items-center mb-2')}>
+              <Text style={className('text-lg font-semibold mb-2')}>{title}</Text>
+              <TouchableOpacity
+                style={className(' p-2 rounded bg-red-200 rounded-full')}
+                onPress={() => setModalVisible(false)}
+              >
+                 <Text style={className('font-bold text-red-500')}>❌</Text>
+              </TouchableOpacity>
+            </View>
+
+          
             <TextInput
               style={className('border border-gray-300 p-2 rounded mb-4')}
               placeholder="Search..."
@@ -59,12 +75,15 @@ const CustomDropdownSearch = ({ options, selectedValue, onValueChange, title = "
             <FlatList
               data={filteredOptions}
               keyExtractor={(item) => item.value}
-              renderItem={({ item }) => (
+              renderItem={({ item, index }) => (
                 <TouchableOpacity
-                  style={className('p-3 bg-gray-100 rounded-lg mb-2')}
+                  key={index}
+                  style={className('p-3 bg-gray-100 rounded-lg mb-2 flex flex-row justify-start items-center')}
                   onPress={() => handleSelect(item.value)}
                 >
+                  {selectedValue === item.value && <View style={className('bg-green-300 w-5 h-5 rounded-full mr-2 shadow-xl')}></View>}
                   <Text style={className('text-lg')}>{item.name}</Text>
+
                 </TouchableOpacity>
               )}
             />

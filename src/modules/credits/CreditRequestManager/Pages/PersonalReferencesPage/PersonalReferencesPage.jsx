@@ -3,6 +3,7 @@ import { View, Text, ScrollView, Button, TouchableOpacity, FlatList } from 'reac
 import { Formik } from 'formik';
 import { className } from '../../../../../utils/className';
 import CustomField from '../../../../../components/CustomField';
+import ModalReferences from '../../../../../components/ModalReferences';
 
 const REFERENCE_FIELDS = [
   {
@@ -20,19 +21,27 @@ const REFERENCE_FIELDS = [
     label: 'Nombre del Referente',
     name: 'nombreReferente',
     component: 'TextField',
-    placeholder: 'Ingrese el nombre del referente',
+    placeholder: 'Nombre del Referente',
   },
   {
     label: 'Es Familiar',
     name: 'esFamiliar',
     component: 'Switch',
     placeholder: '¿Es familiar?',
+    columns: 2,
+  },
+  {
+    label: 'Relación',
+    name: 'relacion',
+    component: 'TextField',
+    placeholder: 'Relación con el solicitante',
+    columns: 2,
   },
   {
     label: 'Dirección Actual',
     name: 'direccionActual',
     component: 'TextField',
-    placeholder: 'Ingrese la dirección actual',
+    placeholder: 'Dirección Actual',
     customProps: {
       multiline: true,
       numberOfLines: 3,
@@ -43,6 +52,7 @@ const REFERENCE_FIELDS = [
     name: 'tipoResidencia',
     component: 'CustomDropdown',
     placeholder: 'Seleccione el tipo de residencia',
+    columns: 2,
     options: [
       { name: 'Propia', value: 'propia' },
       { name: 'Alquilada', value: 'alquilada' },
@@ -54,6 +64,7 @@ const REFERENCE_FIELDS = [
     name: 'tiempoResidencia',
     component: 'CustomDropdown',
     placeholder: 'Seleccione el tiempo de residencia',
+    columns: 2,
     options: [
       { name: 'Menos de 1 año', value: 'menos1' },
       { name: '1-5 años', value: '1-5' },
@@ -64,7 +75,8 @@ const REFERENCE_FIELDS = [
     label: 'Teléfono de Residencia',
     name: 'telefonoResidencia',
     component: 'TextField',
-    placeholder: 'Ingrese el teléfono de residencia',
+    placeholder: 'Teléfono de Residencia',
+    columns: 2,
     customProps: {
       keyboardType: 'phone-pad',
     },
@@ -73,7 +85,8 @@ const REFERENCE_FIELDS = [
     label: 'Teléfono Móvil',
     name: 'telefonoMovil',
     component: 'TextField',
-    placeholder: 'Ingrese el teléfono móvil',
+    placeholder: 'Teléfono Móvil',
+    columns: 2,
     customProps: {
       keyboardType: 'phone-pad',
     },
@@ -82,7 +95,7 @@ const REFERENCE_FIELDS = [
     label: 'Teléfono de Trabajo',
     name: 'telefonoTrabajo',
     component: 'TextField',
-    placeholder: 'Ingrese el teléfono de trabajo',
+    placeholder: 'Teléfono de Trabajo',
     customProps: {
       keyboardType: 'phone-pad',
     },
@@ -91,25 +104,20 @@ const REFERENCE_FIELDS = [
     label: 'Correo Electrónico',
     name: 'correoElectronico',
     component: 'TextField',
-    placeholder: 'Ingrese el correo electrónico',
+    placeholder: 'Correo Electrónico',
     customProps: {
       keyboardType: 'email-address',
     },
   },
-  {
-    label: 'Relación',
-    name: 'relacion',
-    component: 'TextField',
-    placeholder: 'Ingrese la relación',
-  },
+
   {
     label: 'Observación',
     name: 'observacion',
     component: 'TextField',
-    placeholder: 'Ingrese alguna observación',
+    placeholder: 'Observaciones',
     customProps: {
       multiline: true,
-      numberOfLines: 3,
+      numberOfLines: 4,
     },
   },
 ];
@@ -199,35 +207,44 @@ const PersonalReferencesPage = () => {
         )}
       />
 
-      <Text style={className('text-xl font-bold mt-6 mb-4')}>
-        {isEditing ? 'Editar Referencia' : 'Agregar Nueva Referencia'}
-      </Text>
+      <ModalReferences title={isEditing ? 'Editar Referencia' : 'Agregar Nueva Referencia'}>
+        <Formik
+          initialValues={isEditing ? references[editingIndex] : initialValues}
+          onSubmit={handleSubmit}
+        >
+          {({ handleChange, handleSubmit, values }) => (
+            <ScrollView>
+              <View>
+                <View style={className('flex flex-row flex-wrap ')}>
 
-      <Formik
-        initialValues={isEditing ? references[editingIndex] : initialValues}
-        onSubmit={handleSubmit}
-      >
-        {({ handleChange, handleSubmit, values }) => (
-          <View>
-            {REFERENCE_FIELDS.map((field, index) => (
-              <CustomField
-                field={field}
-                handleChange={handleChange}
-                values={values}
-                key={index}
-              />
-            ))}
-            <Button 
-              title={isEditing ? "Actualizar Referencia" : "Agregar Referencia"}
-              onPress={handleSubmit}
-              color="#1E90FF"
-            />
-            <Text>
-              {JSON.stringify(values)}
-            </Text>
-          </View>
-        )}
-      </Formik>
+                  {REFERENCE_FIELDS.map((field, index) => (
+                    <CustomField
+                      field={field}
+                      handleChange={handleChange}
+                      values={values}
+                      key={index}
+                    />
+                  ))}
+                </View>
+
+
+
+                <Button
+                  title={isEditing ? "Actualizar Referencia" : "Agregar Referencia"}
+                  onPress={handleSubmit}
+                  color="#1E90FF"
+                />
+                <Text>
+                  {JSON.stringify(values)}
+                </Text>
+              </View>
+            </ScrollView>
+
+          )}
+        </Formik>
+      </ModalReferences>
+
+
     </ScrollView>
   );
 };

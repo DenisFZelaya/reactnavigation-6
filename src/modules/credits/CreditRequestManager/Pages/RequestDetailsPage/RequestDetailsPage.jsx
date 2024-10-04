@@ -6,15 +6,16 @@ import CustomField from '../../../../../components/CustomField';
 
 const REQUEST_FIELDS = [
   {
-    label: 'Datos de la Solicitud',
-    subLabel: 'Información de la solicitud de crédito',
+    label: 'Producto (Tipo de Credito)',
+    subLabel: '',
     component: 'Title',
   },
   {
-    label: 'Tipo de Producto',
-    name: 'tipoProducto',
-    component: 'CustomDropdown',
-    placeholder: 'Seleccione el tipo de producto',
+    label: 'Fondo',
+    name: 'fondo',
+    component: 'CustomDropdownSearch',
+    placeholder: 'Fondo',
+    columns: 4,
     options: [
       { name: 'Préstamo Personal', value: 'prestamo_personal' },
       { name: 'Crédito Hipotecario', value: 'credito_hipotecario' },
@@ -23,10 +24,97 @@ const REQUEST_FIELDS = [
     ],
   },
   {
+    label: 'Programa',
+    name: 'programa',
+    component: 'CustomDropdownSearch',
+    placeholder: 'Programa',
+    options: [
+      { name: 'Préstamo Personal', value: 'prestamo_personal' },
+      { name: 'Crédito Hipotecario', value: 'credito_hipotecario' },
+      { name: 'Crédito de Vehículo', value: 'credito_vehiculo' },
+      { name: 'Tarjeta de Crédito', value: 'tarjeta_credito' },
+    ],
+  },
+  {
+    label: 'Clase de Colocaciones (Tipo de Producto)',
+    name: 'programa',
+    component: 'CustomDropdownSearch',
+    placeholder: 'Programa',
+    options: [
+      { name: 'Préstamo Personal', value: 'prestamo_personal' },
+      { name: 'Crédito Hipotecario', value: 'credito_hipotecario' },
+      { name: 'Crédito de Vehículo', value: 'credito_vehiculo' },
+      { name: 'Tarjeta de Crédito', value: 'tarjeta_credito' },
+    ],
+  },
+  {
+    label: 'Tipo/Operacion',
+    name: 'programa',
+    component: 'CustomDropdownSearch',
+    placeholder: 'Programa',
+    columns: 2,
+    options: [
+      { name: 'Préstamo Personal', value: 'prestamo_personal' },
+      { name: 'Crédito Hipotecario', value: 'credito_hipotecario' },
+      { name: 'Crédito de Vehículo', value: 'credito_vehiculo' },
+      { name: 'Tarjeta de Crédito', value: 'tarjeta_credito' },
+    ],
+  },
+  {
+    label: 'Tipo Moneda',
+    name: 'programa',
+    component: 'CustomDropdownSearch',
+    placeholder: 'Programa',
+    columns: 2,
+    options: [
+      { name: 'Préstamo Personal', value: 'prestamo_personal' },
+      { name: 'Crédito Hipotecario', value: 'credito_hipotecario' },
+      { name: 'Crédito de Vehículo', value: 'credito_vehiculo' },
+      { name: 'Tarjeta de Crédito', value: 'tarjeta_credito' },
+    ],
+  },
+  {
+    label: '(Tipo de Credito)',
+    subLabel: '',
+    component: 'Title',
+  },
+  {
+    label: 'Tipo de Credito',
+    name: 'Credito',
+    component: 'CustomDropdownSearch',
+    placeholder: 'Tipo de Credito',
+    columns: 2,
+    options: [
+      { name: 'Préstamo Personal', value: 'prestamo_personal' },
+      { name: 'Crédito Hipotecario', value: 'credito_hipotecario' },
+      { name: 'Crédito de Vehículo', value: 'credito_vehiculo' },
+      { name: 'Tarjeta de Crédito', value: 'tarjeta_credito' },
+    ],
+  },
+  {
+    label: 'Actividad Financiada',
+    name: 'progFinanciadaama',
+    component: 'CustomDropdownSearch',
+    placeholder: 'Actividad Financiada',
+    columns: 2,
+    options: [
+      { name: 'Préstamo Personal', value: 'prestamo_personal' },
+      { name: 'Crédito Hipotecario', value: 'credito_hipotecario' },
+      { name: 'Crédito de Vehículo', value: 'credito_vehiculo' },
+      { name: 'Tarjeta de Crédito', value: 'tarjeta_credito' },
+    ],
+  },
+  {
+    label: 'Monto a Solicitar',
+    subLabel: '',
+    component: 'Title',
+  },
+  {
     label: 'Monto Solicitado',
     name: 'montoSolicitado',
     component: 'TextField',
-    placeholder: 'Ingrese el monto solicitado',
+    placeholder: 'Monto solicitado',
+    columns: 2,
     customProps: {
       keyboardType: 'numeric',
     },
@@ -35,10 +123,16 @@ const REQUEST_FIELDS = [
     label: 'Plazo (en meses)',
     name: 'plazo',
     component: 'TextField',
-    placeholder: 'Ingrese el plazo en meses',
+    placeholder: 'Plazo en meses',
+    columns: 2,
     customProps: {
       keyboardType: 'numeric',
     },
+  },
+  {
+    label: 'Destino',
+    subLabel: '',
+    component: 'Title',
   },
   {
     label: 'Destino del Crédito',
@@ -53,10 +147,47 @@ const REQUEST_FIELDS = [
     ],
   },
   {
+    label: 'Renegociacion',
+    subLabel: '',
+    component: 'Title',
+  },
+  {
+    label: 'Tipo',
+    name: 'destinoCredito',
+    component: 'CustomDropdown',
+    placeholder: 'Seleccione el destino del crédito',
+    columns: 2,
+    options: [
+      { name: 'Consumo', value: 'consumo' },
+      { name: 'Vivienda', value: 'vivienda' },
+      { name: 'Negocio', value: 'negocio' },
+      { name: 'Educación', value: 'educacion' },
+    ],
+  },
+  {
+    label: 'Nivel de Riesgo',
+    name: 'destinoCredito',
+    component: 'CustomDropdown',
+    placeholder: 'Seleccione el destino del crédito',
+    columns: 2,
+    options: [
+      { name: 'Consumo', value: 'consumo' },
+      { name: 'Vivienda', value: 'vivienda' },
+      { name: 'Negocio', value: 'negocio' },
+      { name: 'Educación', value: 'educacion' },
+    ],
+  },
+  {
+    label: 'Forma de Pago',
+    subLabel: 'destinoCredito',
+    component: 'Title',
+  },
+  {
     label: 'Forma de Pago',
     name: 'formaPago',
     component: 'CustomDropdown',
     placeholder: 'Seleccione la forma de pago',
+    columns: 2,
     options: [
       { name: 'Efectivo', value: 'efectivo' },
       { name: 'Transferencia Bancaria', value: 'transferencia' },
@@ -65,6 +196,7 @@ const REQUEST_FIELDS = [
   },
   {
     label: 'Día de Pago',
+    columns: 2,
     name: 'diaPago',
     component: 'CustomDropdown',
     placeholder: 'Seleccione el día de pago',
@@ -123,14 +255,17 @@ const RequestDetailPage = () => {
       <Formik initialValues={initialValues} onSubmit={handleSubmit}>
         {({ handleChange, handleSubmit, values }) => (
           <View>
-            {REQUEST_FIELDS.map((field, index) => (
-              <CustomField
-                field={field}
-                handleChange={handleChange}
-                values={values}
-                key={index}
-              />
-            ))}
+            <View style={className('flex flex-row flex-wrap ')}>
+              {REQUEST_FIELDS.map((field, index) => (
+                <CustomField
+                  field={field}
+                  handleChange={handleChange}
+                  values={values}
+                  key={index}
+                />
+              ))}
+            </View>
+
             <Button
               title="Guardar Solicitud"
               onPress={handleSubmit}

@@ -15,6 +15,7 @@ const LABOR_FIELDS = [
     name: 'ocupacion',
     component: 'CustomDropdown',
     placeholder: 'Seleccione la ocupación',
+    columns: 2,
     options: [
       { name: 'Empleado', value: 'empleado' },
       { name: 'Independiente', value: 'independiente' },
@@ -22,22 +23,11 @@ const LABOR_FIELDS = [
     ],
   },
   {
-    label: 'Sabe Leer',
-    name: 'sabeLeer',
-    component: 'Switch',
-    placeholder: '¿Sabe leer?',
-  },
-  {
-    label: 'Sabe Escribir',
-    name: 'sabeEscribir',
-    component: 'Switch',
-    placeholder: '¿Sabe escribir?',
-  },
-  {
     label: 'Tipo de Empleado',
     name: 'tipoEmpleado',
     component: 'CustomDropdown',
     placeholder: 'Seleccione el tipo de empleado',
+    columns: 2,
     options: [
       { name: 'Tiempo completo', value: 'tiempo_completo' },
       { name: 'Medio tiempo', value: 'medio_tiempo' },
@@ -45,10 +35,26 @@ const LABOR_FIELDS = [
     ],
   },
   {
+    label: 'Sabe Leer',
+    name: 'sabeLeer',
+    component: 'Switch',
+    placeholder: '¿Sabe leer?',
+    columns: 2,
+  },
+  {
+    label: 'Sabe Escribir',
+    name: 'sabeEscribir',
+    component: 'Switch',
+    placeholder: '¿Sabe escribir?',
+    columns: 2,
+  },
+
+  {
     label: 'Salario/Ingreso Mensual',
     name: 'salarioMensual',
     component: 'TextField',
     placeholder: 'Ingrese el salario mensual',
+    columns: 2,
     customProps: {
       keyboardType: 'numeric',
     },
@@ -58,6 +64,7 @@ const LABOR_FIELDS = [
     name: 'otrosIngresos',
     component: 'TextField',
     placeholder: 'Ingrese otros ingresos',
+    columns: 2,
     customProps: {
       keyboardType: 'numeric',
     },
@@ -96,19 +103,22 @@ const BUSINESS_FIELDS = [
     label: 'Cargo o Puesto',
     name: 'cargoOPuesto',
     component: 'TextField',
-    placeholder: 'Ingrese el cargo o puesto',
+    placeholder: 'Cargo o Puesto',
+    columns: 2,
   },
   {
     label: 'Fecha de inicio a trabajar',
     name: 'fechaInicioTrabajo',
     component: 'Date',
     placeholder: 'Seleccione la fecha de inicio',
+    columns: 2,
   },
   {
     label: 'Teléfono',
     name: 'telefonoNegocio',
     component: 'TextField',
     placeholder: 'Ingrese el teléfono del negocio',
+    columns: 2,
     customProps: {
       keyboardType: 'phone-pad',
     },
@@ -118,6 +128,7 @@ const BUSINESS_FIELDS = [
     name: 'telefonoFax',
     component: 'TextField',
     placeholder: 'Ingrese el teléfono fax',
+    columns: 2,
     customProps: {
       keyboardType: 'phone-pad',
     },
@@ -151,23 +162,28 @@ const LaboralSection = () => {
       <Formik initialValues={initialValues} onSubmit={handleSubmit}>
         {({ handleChange, handleSubmit, values }) => (
           <View>
-            {LABOR_FIELDS.map((field, index) => (
-              <CustomField
-                field={field}
-                handleChange={handleChange}
-                values={values}
-                key={index}
-              />
-            ))}
-            {BUSINESS_FIELDS.map((field, index) => (
-              <CustomField
-                field={field}
-                handleChange={handleChange}
-                values={values}
-                key={index}
-              />
-            ))}
-            <Button title="Guardar" onPress={handleSubmit} color="#1E90FF" />
+
+
+            <View style={className('flex flex-row flex-wrap ')}>
+              {LABOR_FIELDS.map((field, index) => (
+                <CustomField
+                  field={field}
+                  handleChange={handleChange}
+                  values={values}
+                  key={index}
+                />
+              ))}
+              {BUSINESS_FIELDS.map((field, index) => (
+                <CustomField
+                  field={field}
+                  handleChange={handleChange}
+                  values={values}
+                  key={index}
+                />
+              ))}
+
+            </View>
+            <Button style={className('w-full')} title="Guardar" onPress={handleSubmit} color="#1E90FF" />
             <Text style={className('mt-4 text-sm text-gray-600')}>
               {JSON.stringify(values, null, 2)}
             </Text>

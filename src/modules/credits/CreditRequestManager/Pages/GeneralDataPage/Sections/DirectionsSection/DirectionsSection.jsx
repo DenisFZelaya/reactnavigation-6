@@ -15,6 +15,7 @@ const SECTION_FIELDS_1 = [
     name: 'estado',
     component: 'CustomDropdownSearch',
     placeholder: 'Estado/Departamento',
+    columns: 2,
     options: [
       { name: 'DNI', value: 'dni' },
       { name: 'Passport', value: 'passport' },
@@ -25,6 +26,7 @@ const SECTION_FIELDS_1 = [
     name: 'ciudad',
     component: 'CustomDropdownSearch',
     placeholder: 'Ciudad/Municipio',
+    columns: 2,
     options: [
       { name: 'DNI', value: 'dni' },
       { name: 'Passport', value: 'passport' },
@@ -35,6 +37,7 @@ const SECTION_FIELDS_1 = [
     name: 'barrio',
     component: 'CustomDropdownSearch',
     placeholder: 'Barrio/Colonia',
+    columns: 2,
     options: [
       { name: 'DNI', value: 'dni' },
       { name: 'Passport', value: 'passport' },
@@ -44,6 +47,7 @@ const SECTION_FIELDS_1 = [
     label: 'Aldea/Barrio',
     name: 'aldea',
     component: 'CustomDropdownSearch',
+    columns: 2,
     placeholder: 'Aldea/Barrio',
     options: [
       { name: 'DNI', value: 'dni' },
@@ -65,6 +69,7 @@ const SECTION_FIELDS_1 = [
     name: 'tipoResidencia',
     component: 'CustomDropdown',
     placeholder: 'Tipo de Residencia',
+    columns: 2,
     options: [
       { name: 'DNI', value: 'dni' },
       { name: 'Passport', value: 'passport' },
@@ -75,6 +80,7 @@ const SECTION_FIELDS_1 = [
     name: 'tiempoResidencia',
     component: 'CustomDropdown',
     placeholder: 'Seleccione el tiempo de residencia',
+    columns: 2,
     options: [
       { name: 'Menos de 1 año', value: 'menos_1_anio' },
       { name: '1 a 3 años', value: '1_3_anios' },
@@ -87,6 +93,7 @@ const SECTION_FIELDS_1 = [
     name: 'telefonoResidencia',
     component: 'TextField',
     placeholder: 'Ingrese el teléfono de residencia',
+    columns: 2,
     customProps: {
       keyboardType: 'phone-pad'
     }
@@ -96,6 +103,7 @@ const SECTION_FIELDS_1 = [
     name: 'telefonoMovil',
     component: 'TextField',
     placeholder: 'Ingrese el teléfono móvil',
+    columns: 2,
     customProps: {
       keyboardType: 'phone-pad'
     }
@@ -161,37 +169,39 @@ const DirectionsSection = () => {
 
   return (
     <ScrollView style={className('p-4 bg-white')}>
-      <Text style={className('text-2xl font-bold text-center mb-6 text-blue-600')}>
-        Datos del Domicilio
-      </Text>
       <Formik initialValues={initialValues} onSubmit={handleSubmit}>
         {({ handleChange, handleSubmit, values }) => (
-          <View style={className('')}>
+          <View>
 
-            {SECTION_FIELDS_1.map((field, index) => (
-              <CustomField
-                field={field}
-                handleChange={handleChange}
-                values={values}
-                key={index}
+
+            <View style={className('flex flex-row flex-wrap ')}>
+
+              {SECTION_FIELDS_1.map((field, index) => (
+                <CustomField
+                  field={field}
+                  handleChange={handleChange}
+                  values={values}
+                  key={index}
+                />
+              ))}
+              <Button
+                title="Seleccionar Ubicación en Mapa"
+                onPress={() => setIsMapModalVisible(true)}
               />
-            ))}
-            <Button
-              title="Seleccionar Ubicación en Mapa"
-              onPress={() => setIsMapModalVisible(true)}
-            />
-             {SECTION_FIELDS_2.map((field, index) => (
-              <CustomField
-                field={field}
-                handleChange={handleChange}
-                values={values}
-                key={index}
-              />
-            ))}
+              {SECTION_FIELDS_2.map((field, index) => (
+                <CustomField
+                  field={field}
+                  handleChange={handleChange}
+                  values={values}
+                  key={index}
+                />
+              ))}
+             
+            </View>
             <Button title="Guardar" onPress={handleSubmit} />
-            <Text>
-              {JSON.stringify(values)}
-            </Text>
+              <Text>
+                {JSON.stringify(values)}
+              </Text>
           </View>
         )}
 

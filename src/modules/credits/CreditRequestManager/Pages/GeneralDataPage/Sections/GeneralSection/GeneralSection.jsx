@@ -2,8 +2,6 @@ import React from 'react';
 import { View, Text, ScrollView, Button, TextInput } from 'react-native';
 import { Formik } from 'formik';
 import { className } from '../../../../../../../utils/className';
-import CustomDropdown from '../../../../../../../components/CustomDropdown';
-import CustomDropdownSearch from '../../../../../../../components/CustomDropdownSearch';
 import CustomField from '../../../../../../../components/CustomField';
 
 // Arreglo de configuración para los campos de datos básicos
@@ -18,23 +16,27 @@ const basicClientDataFields = [
     name: 'firstName',
     component: 'TextField',
     placeholder: 'Enter First Name',
+
   },
   {
     label: 'Last Name',
     name: 'secondName',
     component: 'TextField',
     placeholder: 'Enter Last Name',
+    
   },
   {
     label: 'Nickname',
     name: 'nickname',
     component: 'TextField',
     placeholder: 'Enter Nickname',
+    columns: 2,
   },
   {
     label: 'Identification Type',
     name: 'identificationType',
     component: 'CustomDropdown',
+    columns: 2,
     options: [
       { name: 'DNI', value: 'dni' },
       { name: 'Passport', value: 'passport' },
@@ -50,11 +52,13 @@ const basicClientDataFields = [
     label: 'Nacimiento',
     subLabel: 'Fecha de nacimiento del solicitante',
     component: 'Title',
+    
   },
   {
     label: 'Nationality',
     name: 'country',
     component: 'CustomDropdownSearch',
+    columns: 2,
     options: [
       { name: 'Honduras', value: '95' },
       { name: 'USA', value: 'usa' },
@@ -85,6 +89,7 @@ const basicClientDataFields = [
     name: 'birthPlace',
     component: 'TextField',
     placeholder: 'Enter Birth Place',
+    columns: 2,
   },
   {
     label: 'Birth Date',
@@ -101,6 +106,7 @@ const basicClientDataFields = [
     label: 'Gender',
     name: 'gender',
     component: 'CustomDropdown',
+    columns: 2,
     options: [
       { name: 'Male', value: 'male' },
       { name: 'Female', value: 'female' },
@@ -110,6 +116,7 @@ const basicClientDataFields = [
   {
     label: 'Civil State',
     name: 'civilState',
+    columns: 2,
     component: 'CustomDropdown',
     options: [
       { name: 'Single', value: 'single' },
@@ -135,12 +142,14 @@ const basicClientDataFields = [
     name: 'dependents',
     component: 'TextField',
     placeholder: 'Enter Number of Dependents',
+    columns: 2,
   },
   {
     label: 'Dependent Children',
     name: 'children',
     component: 'TextField',
     placeholder: 'Enter Number of Children',
+    columns: 2,
     customProps: {
       inputMode: 'numeric'
 
@@ -173,14 +182,18 @@ const GeneralSection = () => {
       }}>
       {({ handleChange, handleSubmit, values }) => (
         <ScrollView style={className('p-4 bg-white')}>
+          <View style={className('flex flex-row flex-wrap ')}>
           {basicClientDataFields.map((field, index) => (
             <CustomField
               field={field}
               handleChange={handleChange}
               values={values}
               key={index}
+              columns={field?.columns}
             />
           ))}
+          </View>
+       
           <Button title="Submit" onPress={handleSubmit} color="#1E90FF" />
           <Text>
             {JSON.stringify(values)}
