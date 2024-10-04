@@ -16,7 +16,7 @@ const ModalReferences = ({ title = "", children }) => {
     <View style={className('m-0 mb-1')}>
 
       <TouchableOpacity
-        style={className(' p-3 rounded bg-purple-500 rounded-xl')}
+        style={className(' p-3 rounded bg-green-500 rounded-xl')}
         onPress={() => setModalVisible(true)}
       >
         <Text style={className('text-white font-bold')}>Agregar Referencia</Text>
@@ -47,8 +47,6 @@ const ModalReferences = ({ title = "", children }) => {
 
             {children}
             <Button title='Cerrar' onPress={handleClose} />
-            <Text>hola</Text>
-            <Text>hola</Text>
           </View>
         </View>
       </Modal>
