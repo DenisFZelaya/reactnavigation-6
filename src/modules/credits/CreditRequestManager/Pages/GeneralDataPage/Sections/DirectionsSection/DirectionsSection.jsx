@@ -3,6 +3,7 @@ import { View, Text, ScrollView, Button } from 'react-native';
 import { Formik } from 'formik';
 import { className } from '../../../../../../../utils/className';
 import CustomField from '../../../../../../../components/CustomField';
+import CATALOGS from '../../../../../../../constants/CATALOGS.json'
 
 const SECTION_FIELDS_1 = [
   {
@@ -16,10 +17,7 @@ const SECTION_FIELDS_1 = [
     component: 'CustomDropdownSearch',
     placeholder: 'Estado/Departamento',
     columns: 2,
-    options: [
-      { name: 'DNI', value: 'dni' },
-      { name: 'Passport', value: 'passport' },
-    ],
+    options: CATALOGS.departaments,
   },
   {
     label: 'Ciudad/Municipio',
@@ -27,10 +25,7 @@ const SECTION_FIELDS_1 = [
     component: 'CustomDropdownSearch',
     placeholder: 'Ciudad/Municipio',
     columns: 2,
-    options: [
-      { name: 'DNI', value: 'dni' },
-      { name: 'Passport', value: 'passport' },
-    ],
+    options: CATALOGS.cities,
   },
   {
     label: 'Barrio/Colonia',
@@ -70,10 +65,7 @@ const SECTION_FIELDS_1 = [
     component: 'CustomDropdown',
     placeholder: 'Tipo de Residencia',
     columns: 2,
-    options: [
-      { name: 'DNI', value: 'dni' },
-      { name: 'Passport', value: 'passport' },
-    ],
+    options: CATALOGS.residenceTypes,
   },
   {
     label: 'Tiempo de Residir',
@@ -81,12 +73,7 @@ const SECTION_FIELDS_1 = [
     component: 'CustomDropdown',
     placeholder: 'Seleccione el tiempo de residencia',
     columns: 2,
-    options: [
-      { name: 'Menos de 1 año', value: 'menos_1_anio' },
-      { name: '1 a 3 años', value: '1_3_anios' },
-      { name: '3 a 5 años', value: '3_5_anios' },
-      { name: 'Más de 5 años', value: 'mas_5_anios' }
-    ]
+    options: CATALOGS.residenceTimes
   },
   {
     label: 'Teléfono Residencia',

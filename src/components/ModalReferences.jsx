@@ -2,15 +2,13 @@ import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, Modal, FlatList, TextInput, Button } from 'react-native';
 import { className } from '../utils/className';
 
-const ModalReferences = ({ title = "", children }) => {
-  const [modalVisible, setModalVisible] = useState(false);
+const ModalReferences = ({ title = "", children, modalVisible, setModalVisible }) => {
+
 
 
   const handleClose = () => {
     setModalVisible(false);
   };
-
-
 
   return (
     <View style={className('m-0 mb-1')}>
@@ -21,18 +19,14 @@ const ModalReferences = ({ title = "", children }) => {
       >
         <Text style={className('text-white font-bold')}>Agregar Referencia</Text>
       </TouchableOpacity>
-
-
-
-
       <Modal
         transparent={true}
         visible={modalVisible}
         animationType="fade"
         onRequestClose={() => setModalVisible(false)}
       >
-        <View style={className('w-full h-full bg-black bg-opacity-50 pb-4')}>
-          <View style={className(' bg-white  rounded p-5')}>
+        <View style={className('w-full h-full bg-opacity-50')}>
+          <View style={className('w-full h-full bg-white  rounded p-5')}>
             <View style={className('flex flex-row justify-between items-center mb-2')}>
               <Text style={className('text-lg font-semibold mb-2')}>{title}</Text>
               <TouchableOpacity
@@ -42,11 +36,7 @@ const ModalReferences = ({ title = "", children }) => {
                 <Text style={className('font-bold text-white')}>Cerrar</Text>
               </TouchableOpacity>
             </View>
-
-
-
             {children}
-            <Button title='Cerrar' onPress={handleClose} />
           </View>
         </View>
       </Modal>

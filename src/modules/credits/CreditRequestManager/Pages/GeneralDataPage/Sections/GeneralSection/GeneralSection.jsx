@@ -3,7 +3,7 @@ import { View, Text, ScrollView, Button, TextInput } from 'react-native';
 import { Formik } from 'formik';
 import { className } from '../../../../../../../utils/className';
 import CustomField from '../../../../../../../components/CustomField';
-
+import CATALOGS from '../../../../../../../constants/CATALOGS.json'
 // Arreglo de configuración para los campos de datos básicos
 const basicClientDataFields = [
   {
@@ -37,10 +37,7 @@ const basicClientDataFields = [
     name: 'identificationType',
     component: 'CustomDropdown',
     columns: 2,
-    options: [
-      { name: 'DNI', value: 'dni' },
-      { name: 'Passport', value: 'passport' },
-    ],
+    options: CATALOGS.identificationType,
   },
   {
     label: 'DNI Number',
@@ -59,30 +56,7 @@ const basicClientDataFields = [
     name: 'country',
     component: 'CustomDropdownSearch',
     columns: 2,
-    options: [
-      { name: 'Honduras', value: '95' },
-      { name: 'USA', value: 'usa' },
-      { name: 'GT', value: 'gt' },
-      { name: 'NIC', value: 'nic' },
-      { name: 'SV', value: 'sv' },
-      { name: 'USAS', value: 'usa2' },
-      { name: 'GTS', value: 'gt2' },
-      { name: 'NICS', value: 'nic2' },
-      { name: 'SVS', value: 'sv2' },
-      { name: 'USAEEEE', value: 'usa33' },
-      { name: 'GTEE', value: 'gt33' },
-      { name: 'NICEE', value: 'nic33' },
-      { name: 'SVEE', value: 'sv33' },
-      { name: 'USAEEEE', value: 'usa33' },
-      { name: 'GTEE', value: 'gt33' },
-      { name: 'NICEE', value: 'nic33' },
-      { name: 'SVEE', value: 'sv33' },
-
-      { name: 'USAEEsEE', value: 'ussa33' },
-      { name: 'GTsEE', value: 'gts33' },
-      { name: 'NIsCEE', value: 'nisc33' },
-      { name: 'SVsEE', value: 'sv3s3' },
-    ],
+    options: CATALOGS.countries,
   },
   {
     label: 'Birth Place',
@@ -107,10 +81,7 @@ const basicClientDataFields = [
     name: 'gender',
     component: 'CustomDropdown',
     columns: 2,
-    options: [
-      { name: 'Male', value: 'male' },
-      { name: 'Female', value: 'female' },
-    ],
+    options: CATALOGS.genders,
   },
 
   {
@@ -118,19 +89,13 @@ const basicClientDataFields = [
     name: 'civilState',
     columns: 2,
     component: 'CustomDropdown',
-    options: [
-      { name: 'Single', value: 'single' },
-      { name: 'Married', value: 'married' },
-    ],
+    options: CATALOGS.civilStatus,
   },
   {
     label: 'Education Level',
     name: 'educationLevel',
     component: 'CustomDropdown',
-    options: [
-      { name: 'High School', value: 'highSchool' },
-      { name: 'Bachelor', value: 'bachelor' },
-    ],
+    options: CATALOGS.educationLevel,
   },
   {
     label: 'Dependientes',

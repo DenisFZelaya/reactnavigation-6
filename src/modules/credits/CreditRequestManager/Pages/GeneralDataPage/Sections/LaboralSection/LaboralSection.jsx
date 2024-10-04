@@ -3,6 +3,7 @@ import { View, Text, ScrollView, Button } from 'react-native';
 import { Formik } from 'formik';
 import { className } from '../../../../../../../utils/className';
 import CustomField from '../../../../../../../components/CustomField';
+import CATALOGS from '../../../../../../../constants/CATALOGS.json'
 
 const LABOR_FIELDS = [
   {
@@ -13,14 +14,10 @@ const LABOR_FIELDS = [
   {
     label: 'Ocupación',
     name: 'ocupacion',
-    component: 'CustomDropdown',
+    component: 'CustomDropdownSearch',
     placeholder: 'Seleccione la ocupación',
     columns: 2,
-    options: [
-      { name: 'Empleado', value: 'empleado' },
-      { name: 'Independiente', value: 'independiente' },
-      { name: 'Jubilado', value: 'jubilado' },
-    ],
+    options: CATALOGS.ocupations,
   },
   {
     label: 'Tipo de Empleado',
@@ -153,7 +150,7 @@ const LaboralSection = () => {
   };
 
   const handleSubmit = (values) => {
-    console.log(values);
+    console.log(valus);
     // Aquí puedes manejar el envío de datos
   };
 

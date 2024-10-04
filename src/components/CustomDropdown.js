@@ -16,7 +16,7 @@ const CustomDropdown = ({ options, selectedValue, onValueChange, title = "" }) =
 
   const getSelectedName = () => {
     const selectedOption = options.find(option => option.value === selectedValue);
-    return selectedOption ? selectedOption.name : title;
+    return selectedOption ? selectedOption?.value + ' - ' +  selectedOption?.name : title;
   };
 
   return (
@@ -57,15 +57,15 @@ const CustomDropdown = ({ options, selectedValue, onValueChange, title = "" }) =
               renderItem={({ item, index }) => (
                 <TouchableOpacity
                   key={index}
-                  style={className('p-3 bg-gray-100 rounded-lg mb-2 flex flex-row justify-start items-center')}
+                  style={className('p-2 bg-gray-100 rounded-lg mb-2 flex flex-row justify-start items-center')}
                   onPress={() => handleSelect(item.value)}
                 >
                   {selectedValue === item.value && <View style={className('bg-green-300 w-5 h-5 rounded-full mr-2 shadow-xl')}></View>}
-                  <Text style={className('text-lg')}>{item.name}</Text>
+                  <Text style={className('')}>{item.name}</Text>
                 </TouchableOpacity>
               )}
             />
-            <Button title='Cerrar' onPress={handleClose} />
+
           </View>
         </View>
       </Modal>

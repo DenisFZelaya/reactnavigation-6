@@ -3,6 +3,7 @@ import { View, Text, ScrollView, Button, TouchableHighlight } from 'react-native
 import { Formik } from 'formik';
 import { className } from '../../../../../../../utils/className';
 import CustomField from '../../../../../../../components/CustomField';
+import CATALOGS from '../../../../../../../constants/CATALOGS.json'
 
 const ADDITIONAL_FIELDS = [
   {
@@ -11,35 +12,27 @@ const ADDITIONAL_FIELDS = [
     component: 'Title',
   },
   {
+    label: 'Sector Económico',
+    name: 'sectorEconomico',
+    component: 'CustomDropdownSearch',
+    placeholder: 'Buscar sector económico',
+    options: CATALOGS.economicSectors,
+  },
+  {
     label: 'Grupo Económico',
     name: 'grupoEconomico',
     component: 'CustomDropdown',
     placeholder: 'Seleccione el grupo económico',
     columns: 2,
-    options: [
-      { name: 'Grupo A', value: 'grupoA' },
-      { name: 'Grupo B', value: 'grupoB' },
-      { name: 'Grupo C', value: 'grupoC' },
-    ],
+    options: CATALOGS.economicGroups
   },
-  {
-    label: 'Sector Económico',
-    name: 'sectorEconomico',
-    component: 'CustomDropdownSearch',
-    placeholder: 'Buscar sector económico',
-    columns: 2,
-    options: [
-      { name: 'Agricultura', value: 'agricultura' },
-      { name: 'Industria', value: 'industria' },
-      { name: 'Servicios', value: 'servicios' },
-      // Añade más opciones según sea necesario
-    ],
-  },
+
   {
     label: 'Medio de comunicación principal',
     name: 'medioComunicacion',
     component: 'CustomDropdown',
-    placeholder: 'Seleccione el medio de comunicación',
+    placeholder: 'Medio de comunicación',
+    columns: 2,
     options: [
       { name: 'Email', value: 'email' },
       { name: 'Teléfono', value: 'telefono' },

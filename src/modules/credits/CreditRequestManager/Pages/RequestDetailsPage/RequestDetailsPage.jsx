@@ -3,6 +3,7 @@ import { View, Text, ScrollView, Button } from 'react-native';
 import { Formik } from 'formik';
 import { className } from '../../../../../utils/className';
 import CustomField from '../../../../../components/CustomField';
+import CATALOGS from '../../../../../constants/CATALOGS.json'
 
 const REQUEST_FIELDS = [
   {
@@ -13,39 +14,24 @@ const REQUEST_FIELDS = [
   {
     label: 'Fondo',
     name: 'fondo',
-    component: 'CustomDropdownSearch',
+    component: 'CustomDropdown',
     placeholder: 'Fondo',
     columns: 4,
-    options: [
-      { name: 'Préstamo Personal', value: 'prestamo_personal' },
-      { name: 'Crédito Hipotecario', value: 'credito_hipotecario' },
-      { name: 'Crédito de Vehículo', value: 'credito_vehiculo' },
-      { name: 'Tarjeta de Crédito', value: 'tarjeta_credito' },
-    ],
+    options: CATALOGS.funds
   },
   {
     label: 'Programa',
     name: 'programa',
-    component: 'CustomDropdownSearch',
+    component: 'CustomDropdown',
     placeholder: 'Programa',
-    options: [
-      { name: 'Préstamo Personal', value: 'prestamo_personal' },
-      { name: 'Crédito Hipotecario', value: 'credito_hipotecario' },
-      { name: 'Crédito de Vehículo', value: 'credito_vehiculo' },
-      { name: 'Tarjeta de Crédito', value: 'tarjeta_credito' },
-    ],
+    options: CATALOGS.creditPrograms,
   },
   {
     label: 'Clase de Colocaciones (Tipo de Producto)',
     name: 'programa',
     component: 'CustomDropdownSearch',
     placeholder: 'Programa',
-    options: [
-      { name: 'Préstamo Personal', value: 'prestamo_personal' },
-      { name: 'Crédito Hipotecario', value: 'credito_hipotecario' },
-      { name: 'Crédito de Vehículo', value: 'credito_vehiculo' },
-      { name: 'Tarjeta de Crédito', value: 'tarjeta_credito' },
-    ],
+    options: CATALOGS.classes,
   },
   {
     label: 'Tipo/Operacion',
@@ -53,25 +39,15 @@ const REQUEST_FIELDS = [
     component: 'CustomDropdownSearch',
     placeholder: 'Programa',
     columns: 2,
-    options: [
-      { name: 'Préstamo Personal', value: 'prestamo_personal' },
-      { name: 'Crédito Hipotecario', value: 'credito_hipotecario' },
-      { name: 'Crédito de Vehículo', value: 'credito_vehiculo' },
-      { name: 'Tarjeta de Crédito', value: 'tarjeta_credito' },
-    ],
+    options: CATALOGS.operationTypes
   },
   {
     label: 'Tipo Moneda',
     name: 'programa',
-    component: 'CustomDropdownSearch',
+    component: 'CustomDropdown',
     placeholder: 'Programa',
     columns: 2,
-    options: [
-      { name: 'Préstamo Personal', value: 'prestamo_personal' },
-      { name: 'Crédito Hipotecario', value: 'credito_hipotecario' },
-      { name: 'Crédito de Vehículo', value: 'credito_vehiculo' },
-      { name: 'Tarjeta de Crédito', value: 'tarjeta_credito' },
-    ],
+    options:CATALOGS.currencies
   },
   {
     label: '(Tipo de Credito)',
@@ -84,12 +60,7 @@ const REQUEST_FIELDS = [
     component: 'CustomDropdownSearch',
     placeholder: 'Tipo de Credito',
     columns: 2,
-    options: [
-      { name: 'Préstamo Personal', value: 'prestamo_personal' },
-      { name: 'Crédito Hipotecario', value: 'credito_hipotecario' },
-      { name: 'Crédito de Vehículo', value: 'credito_vehiculo' },
-      { name: 'Tarjeta de Crédito', value: 'tarjeta_credito' },
-    ],
+    options: CATALOGS.operationTypes,
   },
   {
     label: 'Actividad Financiada',
@@ -97,12 +68,7 @@ const REQUEST_FIELDS = [
     component: 'CustomDropdownSearch',
     placeholder: 'Actividad Financiada',
     columns: 2,
-    options: [
-      { name: 'Préstamo Personal', value: 'prestamo_personal' },
-      { name: 'Crédito Hipotecario', value: 'credito_hipotecario' },
-      { name: 'Crédito de Vehículo', value: 'credito_vehiculo' },
-      { name: 'Tarjeta de Crédito', value: 'tarjeta_credito' },
-    ],
+    options: CATALOGS.financialActivities,
   },
   {
     label: 'Monto a Solicitar',
@@ -139,12 +105,7 @@ const REQUEST_FIELDS = [
     name: 'destinoCredito',
     component: 'CustomDropdown',
     placeholder: 'Seleccione el destino del crédito',
-    options: [
-      { name: 'Consumo', value: 'consumo' },
-      { name: 'Vivienda', value: 'vivienda' },
-      { name: 'Negocio', value: 'negocio' },
-      { name: 'Educación', value: 'educacion' },
-    ],
+    options: CATALOGS.destinations,
   },
   {
     label: 'Renegociacion',
@@ -157,12 +118,7 @@ const REQUEST_FIELDS = [
     component: 'CustomDropdown',
     placeholder: 'Seleccione el destino del crédito',
     columns: 2,
-    options: [
-      { name: 'Consumo', value: 'consumo' },
-      { name: 'Vivienda', value: 'vivienda' },
-      { name: 'Negocio', value: 'negocio' },
-      { name: 'Educación', value: 'educacion' },
-    ],
+    options: CATALOGS.renegotiationTypes,
   },
   {
     label: 'Nivel de Riesgo',
@@ -207,11 +163,7 @@ const REQUEST_FIELDS = [
     name: 'frecuenciaPago',
     component: 'CustomDropdown',
     placeholder: 'Seleccione la frecuencia de pago',
-    options: [
-      { name: 'Mensual', value: 'mensual' },
-      { name: 'Quincenal', value: 'quincenal' },
-      { name: 'Semanal', value: 'semanal' },
-    ],
+    options: CATALOGS.frequencies,
   },
   {
     label: 'Observaciones',

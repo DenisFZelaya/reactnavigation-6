@@ -130,6 +130,7 @@ const PersonalReferencesPage = () => {
   const [references, setReferences] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
   const [editingIndex, setEditingIndex] = useState(null);
+  const [modalVisible, setModalVisible] = useState(false);
 
   const initialValues = {
     tipoReferencia: '',
@@ -160,6 +161,8 @@ const PersonalReferencesPage = () => {
     } else {
       setReferences([...references, values]);
     }
+
+    setModalVisible(false)
     console.log(values);
     // Aquí puedes manejar el envío de datos al servidor o almacenamiento local
   };
@@ -183,7 +186,7 @@ const PersonalReferencesPage = () => {
   };
 
   return (
-    <ScrollView style={className('p-4 bg-white')}>
+    <View style={className('p-4 h-full bg-white')}>
       <Text style={className('text-2xl font-bold text-center mb-6 text-blue-600')}>
         Referencias Personales
       </Text>
@@ -196,7 +199,10 @@ const PersonalReferencesPage = () => {
             <Text style={className('font-bold')}>{item.nombreReferente}</Text>
             <Text>{item.tipoReferencia}</Text>
             <View style={className('flex-row justify-end mt-2')}>
-              <TouchableOpacity onPress={() => handleEdit(index)} style={className('mr-2')}>
+              <TouchableOpacity onPress={() => {
+                handleEdit(index)
+                setModalVisible(true)
+              }} style={className('mr-2')}>
                 <Text style={className('text-blue-500')}>Editar</Text>
               </TouchableOpacity>
               <TouchableOpacity onPress={() => handleDelete(index)}>
@@ -207,7 +213,7 @@ const PersonalReferencesPage = () => {
         )}
       />
 
-      <ModalReferences title={isEditing ? 'Editar Referencia' : 'Agregar Nueva Referencia'}>
+      <ModalReferences modalVisible={modalVisible} setModalVisible={setModalVisible} title={isEditing ? 'Editar Referencia' : 'Agregar Nueva Referencia'}>
         <Formik
           initialValues={isEditing ? references[editingIndex] : initialValues}
           onSubmit={handleSubmit}
@@ -226,14 +232,13 @@ const PersonalReferencesPage = () => {
                     />
                   ))}
                 </View>
-
-
-
-                <Button
-                  title={isEditing ? "Actualizar Referencia" : "Agregar Referencia"}
+                <TouchableOpacity
+                  style={className('bg-green-500 p-3 rounded-md shadow-xl')}mvv 
                   onPress={handleSubmit}
                   color="#1E90FF"
-                />
+                >
+                  <Text style={className('text-white font-bold')}>{isEditing ? "Actualizar Referencia" : "Agregar Referencia"}</Text>
+                </TouchableOpacity>
                 <Text>
                   {JSON.stringify(values)}
                 </Text>
@@ -245,7 +250,7 @@ const PersonalReferencesPage = () => {
       </ModalReferences>
 
 
-    </ScrollView>
+    </View>
   );
 };
 

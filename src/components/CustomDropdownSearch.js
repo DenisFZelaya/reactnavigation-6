@@ -29,7 +29,7 @@ const CustomDropdownSearch = ({ options, selectedValue, onValueChange, title = "
 
   const getSelectedName = () => {
     const selectedOption = options.find(option => option.value === selectedValue);
-    return selectedOption ? selectedOption.name : title;
+    return selectedOption ? selectedOption.value + '-' +  selectedOption.name : title;
   };
 
   return (
@@ -56,7 +56,7 @@ const CustomDropdownSearch = ({ options, selectedValue, onValueChange, title = "
         <View style={className('justify-center bg-black bg-opacity-50')}>
           <View style={className('h-full bg-white m-5 rounded p-5')}>
           <View style={className('flex flex-row justify-between items-center mb-2')}>
-              <Text style={className('text-lg font-semibold mb-2')}>{title}</Text>
+              <Text style={className('font-semibold mb-2')}>{title}</Text>
               <TouchableOpacity
                 style={className(' p-2 rounded bg-red-200 rounded-full')}
                 onPress={() => setModalVisible(false)}
@@ -78,11 +78,11 @@ const CustomDropdownSearch = ({ options, selectedValue, onValueChange, title = "
               renderItem={({ item, index }) => (
                 <TouchableOpacity
                   key={index}
-                  style={className('p-3 bg-gray-100 rounded-lg mb-2 flex flex-row justify-start items-center')}
+                  style={className('p-2 bg-gray-100 rounded-lg mb-2 flex flex-row justify-start items-center')}
                   onPress={() => handleSelect(item.value)}
                 >
                   {selectedValue === item.value && <View style={className('bg-green-300 w-5 h-5 rounded-full mr-2 shadow-xl')}></View>}
-                  <Text style={className('text-lg')}>{item.name}</Text>
+                  <Text style={className('')}>{item.name}</Text>
 
                 </TouchableOpacity>
               )}

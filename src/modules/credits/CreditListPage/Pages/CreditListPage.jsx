@@ -26,6 +26,7 @@ export default function CreditListPage({navigation}) {
 
   return (
     <ScrollView style={className('h-full bg-gray-100 p-4')}>
+      
       <Text
         style={className('text-2xl font-bold text-center mb-6 text-blue-600')}>
         Listado de Créditos
